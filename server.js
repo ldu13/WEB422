@@ -4,7 +4,7 @@
  * * (including web sites) or distributed to other students. 
  * 
  * Name: _____Lei Du______ Student ID: __047587134___ Date: ___Sept. 16, 2022___ 
- * Cyclic Link: __https://lively-pea-coat-frog.cyclic.app_______________________ 
+ * Cyclic Link: _________________________ 
  * 
  ********************************************************************************/
 
