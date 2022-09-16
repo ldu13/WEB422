@@ -4,7 +4,7 @@
  * * (including web sites) or distributed to other students. 
  * 
  * Name: _____Lei Du______ Student ID: __047587134___ Date: ___Sept. 16, 2022___ 
- * Cyclic Link: ___https://tired-red-top-coat.cyclic.app_________________________ 
+ * Cyclic Link: __https://lively-pea-coat-frog.cyclic.app_______________________ 
  * 
  ********************************************************************************/
 
@@ -32,60 +32,51 @@ app.get('/', (req, res) => {
 
 // Add new
 app.post('/api/movies', (req, res) => {
-  db.addNewMovie(req.body).then(()=>{
-    res.status(201).json("Movie added");
-  }).catch(()=>{
-    res.status(500).json({message:"ERROR"});
+  db.addNewMovie(req.body).then(() => {
+    res.status(201).json({message: 'Movie added'});
+  }).catch(() => {
+    res.status(500).json({message: 'ERROR'});
   })
 });
 
 // Get all
 app.get('/api/movies', (req, res) => {
-  db.getAllMovies(req.query.page,req.query.perPage, req.query.title).then((data)=>{
+  db.getAllMovies(req.query.page, req.query.perPage, req.query.title).then((data) => {
     if(data.length === 0)
-      res.status(204).json({message:"Data not found"});
+      res.status(204).json({message: 'Data not found'});
     else
       res.status(201).json(data);
-  })
-  .catch((err)=>{
-    res.status(500).json({message:err.message});
+  }).catch(() => {
+    res.status(500).json({message: 'ERROR'});
   });
 });
 
 // Get one
 app.get('/api/movies/:_id', (req,res) => {
-  db.getMovieById(req.params._id).then((data)=>{
+  db.getMovieById(req.params._id).then((data) => {
     res.status(201).json(data);
-  }).catch(()=>{
-    res.status(500).json({message:"ERROR"});
+  }).catch(() => {
+    res.status(500).json({message: 'ERROR'});
   });
 });
 
 // Edit existing
-app.put('/api/movies/:_id', (req, res) => {
-    
-    db.updateMovieById(req.body,req.params._id).then(()=>{
-      res.status(201).json({message:"MOVIE UPDATED"});
-    }).catch(()=>{
-      res.status(500).json({message:ERROR});
-    });
+app.put('/api/movies/:_id', (req, res) => {    
+  db.updateMovieById(req.body,req.params._id).then(() => {
+    res.status(201).json({message: 'Movie updated'});
+  }).catch(() => {
+    res.status(500).json({message: 'ERROR'});
+  });
 });
 
 // Delete item
 app.delete('/api/movies/:_id', (req, res) => {
-
-    db.deleteMovieById(req.params._id).then(()=>{
-      res.status(201).json({message: "Movie deleted"});
-    })
-    .catch(()=> {
-    res.status(500).json({message: "ERROR"});
+  db.deleteMovieById(req.params._id).then(() => {
+    res.status(201).json({message: 'Movie deleted'});
+  }).catch(() => {
+    res.status(500).json({message: 'ERROR'});
   });
 });
-
-// Resource not found (this should be at the end)
-// app.use((req, res) => {
-//   res.status(404).json({message: "404 - Resource not found"});
-// });
 
 
 // ********************************************
