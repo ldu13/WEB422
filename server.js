@@ -1,12 +1,12 @@
 /********************************************************************************* 
- * * WEB422 – Assignment 1 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. 
- * * No part of this assignment has been copied manually or electronically from any other source 
- * * (including web sites) or distributed to other students. 
- * 
- * Name: _____Lei Du______ Student ID: __047587134___ Date: ___Sept. 16, 2022___ 
- * Cyclic Link: _________________________ 
- * 
- ********************************************************************************/
+* WEB422 – Assignment 1 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. 
+* No part of this assignment has been copied manually or electronically from any other source 
+* (including web sites) or distributed to other students. 
+* 
+* Name: _____Lei Du______ Student ID: __047587134___ Date: ___Sept. 16, 2022___ 
+* Cyclic Link: ____https://lively-pea-coat-frog.cyclic.app_____________________ 
+* 
+********************************************************************************/
 
 // Setup
 const express = require('express');
@@ -34,8 +34,8 @@ app.get('/', (req, res) => {
 app.post('/api/movies', (req, res) => {
   db.addNewMovie(req.body).then(() => {
     res.status(201).json({message: 'Movie added'});
-  }).catch(() => {
-    res.status(500).json({message: 'ERROR'});
+  }).catch((err) => {
+    res.status(500).json({error: err});
   })
 });
 
@@ -46,8 +46,8 @@ app.get('/api/movies', (req, res) => {
       res.status(204).json({message: 'Data not found'});
     else
       res.status(201).json(data);
-  }).catch(() => {
-    res.status(500).json({message: 'ERROR'});
+  }).catch((err) => {
+    res.status(500).json({error: err});
   });
 });
 
@@ -55,17 +55,17 @@ app.get('/api/movies', (req, res) => {
 app.get('/api/movies/:_id', (req,res) => {
   db.getMovieById(req.params._id).then((data) => {
     res.status(201).json(data);
-  }).catch(() => {
-    res.status(500).json({message: 'ERROR'});
+  }).catch((err) => {
+    res.status(500).json({error: err});
   });
 });
 
 // Edit existing
 app.put('/api/movies/:_id', (req, res) => {    
-  db.updateMovieById(req.body,req.params._id).then(() => {
+  db.updateMovieById(req.body, req.params._id).then(() => {
     res.status(201).json({message: 'Movie updated'});
-  }).catch(() => {
-    res.status(500).json({message: 'ERROR'});
+  }).catch((err) => {
+    res.status(500).json({error: err});
   });
 });
 
@@ -73,8 +73,8 @@ app.put('/api/movies/:_id', (req, res) => {
 app.delete('/api/movies/:_id', (req, res) => {
   db.deleteMovieById(req.params._id).then(() => {
     res.status(201).json({message: 'Movie deleted'});
-  }).catch(() => {
-    res.status(500).json({message: 'ERROR'});
+  }).catch((err) => {
+    res.status(500).json({error: err});
   });
 });
 
