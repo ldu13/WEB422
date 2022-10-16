@@ -1,13 +1,3 @@
-/********************************************************************************* 
-* WEB422 – Assignment 1 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. 
-* No part of this assignment has been copied manually or electronically from any other source 
-* (including web sites) or distributed to other students. 
-* 
-* Name: _____Lei Du______ Student ID: __047587134___ Date: ___Sept. 16, 2022___ 
-* Cyclic Link: ____https://lively-pea-coat-frog.cyclic.app_____________________ 
-* 
-********************************************************************************/
-
 // Setup
 const express = require('express');
 const cors = require('cors');
